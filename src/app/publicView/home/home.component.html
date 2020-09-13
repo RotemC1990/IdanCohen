@@ -1,0 +1,57 @@
+<app-media-viewer id="topPlayer" ></app-media-viewer> 
+
+
+     
+   
+
+<app-navigation-bar></app-navigation-bar>
+
+<h1>Idan Cohen</h1>
+<h4>Creative    -    Director    -    Video editor</h4>
+
+
+<!--
+<app-media-viewer *ngFor="let video of videos"
+      [videoPath]="video.videoPath"
+      [frontReelVideo]=video.frontReel>
+    </app-media-viewer>
+<app-video-modal></app-video-modal>
+
+-->
+
+
+<table>
+ <tr>
+<td  *ngFor="let video of videos; let i = index">
+  
+  
+ 
+    
+  
+   <button (click)="openModal(video)">
+     <p>{{video.videoName}}</p>
+     
+        
+        <img src="{{video.posterPath}}" height="200px">
+     
+   </button>
+  
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>11111</td>
+<td>222222</td>
+<td>33333</td>
+
+</tr>
+<tr>
+  <td>444444</td>
+  <td>555555</td>
+  <td>666666</td>
+  
+  </tr>
+
+</table>

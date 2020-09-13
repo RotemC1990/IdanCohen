@@ -1,0 +1,21 @@
+#topPlayer{
+    height: 5300px !important;
+}
+
+.dark-modal .modal-content {
+    background-color: #292b2c;
+    color: white;
+  }
+  .dark-modal .close {
+    color: white;
+  }
+  .light-blue-backdrop {
+    background-color: #5cb3fd;
+  }
+  h1 ,h4 {
+      text-align: center;
+      font-style: italic;
+  }
+  table ,tr ,td {
+    border: 0px;
+  }
