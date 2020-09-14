@@ -5,7 +5,7 @@
    
 
 <app-navigation-bar></app-navigation-bar>
-
+<br>
 <h1>Idan Cohen</h1>
 <h4>Creative    -    Director    -    Video editor</h4>
 
@@ -17,41 +17,27 @@
     </app-media-viewer>
 <app-video-modal></app-video-modal>
 
+
+
 -->
-
-
-<table>
- <tr>
-<td  *ngFor="let video of videos; let i = index">
-  
-  
- 
-    
-  
-   <button (click)="openModal(video)">
-     <p>{{video.videoName}}</p>
-     
-        
-        <img src="{{video.posterPath}}" height="200px">
-     
-   </button>
-  
-</td>
-</tr>
+<br><br>
+<table class="table table-borderless">
+  <ng-container *ngFor="let video of videos; let i = index">
+    <tr *ngIf="((i % 3) == 0)">
+      <ng-container *ngFor="let video of videos; let j = index">
+        <td *ngIf="j >= i && j < i+3">
+          <button type="button" class="btn btn-link" (click)="openModal(video)">
+           
+            
+               
+               <img src="{{video.posterPath}}" height="200px">
+               <p>{{video.videoName}}</p>
+          </button>
+        </td>
+      </ng-container>
+    </tr>
+  </ng-container>
 </table>
 
-<table>
-<tr>
-<td>11111</td>
-<td>222222</td>
-<td>33333</td>
 
-</tr>
-<tr>
-  <td>444444</td>
-  <td>555555</td>
-  <td>666666</td>
-  
-  </tr>
 
-</table>
