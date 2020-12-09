@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadComponent } from './upload.component';
+import { EditRemoveSpecificComponent } from './edit-remove-specific.component';
 
-describe('UploadComponent', () => {
-  let component: UploadComponent;
-  let fixture: ComponentFixture<UploadComponent>;
+describe('EditRemoveSpecificComponent', () => {
+  let component: EditRemoveSpecificComponent;
+  let fixture: ComponentFixture<EditRemoveSpecificComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadComponent ]
+      declarations: [ EditRemoveSpecificComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadComponent);
+    fixture = TestBed.createComponent(EditRemoveSpecificComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

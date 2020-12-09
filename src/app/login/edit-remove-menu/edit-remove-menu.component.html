@@ -1,0 +1,22 @@
+<br>
+<h1>Edit And Remove List Page</h1>
+<br>
+<table class="table table-borderless">
+    <ng-container *ngFor="let videoMeta of videosMeta; let i = index">
+      <tr *ngIf="((i % 3) == 0)">
+        <ng-container *ngFor="let videoMeta of videosMeta; let j = index">
+          <td *ngIf="j >= i && j < i+3">
+            <button type="button" class="btn btn-link" (click)="goToEditRemove(videoMeta.data(),videoMeta.id)">
+             
+              
+                 <h4>{{videoMeta.data().name}}</h4>
+                 <img src="{{videoMeta.data().posterPath}}" height="200px">
+                 <h4>{{videoMeta.id}}</h4>
+                 
+                 
+            </button>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </table>

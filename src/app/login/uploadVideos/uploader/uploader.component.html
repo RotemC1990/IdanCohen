@@ -1,0 +1,46 @@
+
+<br>
+<h1>Upload Page</h1>
+<br>
+
+<div class="all-form-groups">
+    <div >
+      <label for="Title">Video Title</label>
+      <input type="text" class="form-control" [(ngModel)]="title">
+
+      <label for="description">Video Description</label>
+      <textarea class="form-control" [(ngModel)]="description" rows="3"></textarea>
+
+      <label for="video"> Poster And Video Files</label>
+      
+      <div class="dropzone" 
+      dropzone
+      (hovered)="toggleHover($event)"
+      (dropped)="onDrop($event)"
+      [class.hovering]="isHovering">
+
+      <h3>Poster And Video File Drop Zone</h3>
+      <p>Drag and Drop a File</p>
+      <input class="file-label" type="file" (change)="onDrop($event.target.files)">
+      </div>
+
+      <div *ngFor="let file of files">
+      <upload-task  [videoFile]="file"></upload-task>
+      </div>
+      
+      <br>
+      <label for="category">Video Category</label>
+      <select class="form-control" [(ngModel)]="category">
+        <option>Product</option>
+        <option>Music</option>
+        <option>Commercial</option>
+        <option>Promo</option>
+        <option>Events</option>
+        <option>Viral</option>
+      </select>
+      <br>
+     
+  <button (click)="startUpload()" [disabled]="!uploadBoolean" type="button" class="btn btn-secondary">Upload Video</button>
+    </div>
+    
+</div>

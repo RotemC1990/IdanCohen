@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EditComponent } from './login/edit/edit.component';
-import { UploadComponent } from './login/upload/upload.component';
 import { HomeComponent } from './publicView/home/home.component';
 import { ProductComponent } from './publicView/product/product.component';
 import { MusicComponent } from './publicView/music/music.component';
@@ -20,13 +19,28 @@ import { NavigationBarComponent } from './publicView/constants/navigation-bar/na
 import { FooterComponent } from './publicView/constants/footer/footer.component';
 import { VideoModalComponent } from './publicView/video-modal/video-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import {FirebaseService} from './services/firebase.service';
+import { environment } from "../environments/environment";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { FilesUploadMetadata } from './models/FilesUploadMetadata';
+import { DropzoneDirective } from './login/uploadVideos/dropzone.directive';
+import { UploaderComponent } from './login/uploadVideos/uploader/uploader.component';
+import { UploadTaskComponent } from './login/uploadVideos/upload-task/upload-task.component';
+import { EditRemoveMenuComponent } from './login/edit-remove-menu/edit-remove-menu.component';
+import { EditRemoveSpecificComponent } from './login/edit-remove-menu/edit-remove-specific/edit-remove-specific.component';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EditComponent,
-    UploadComponent,
     HomeComponent,
     ProductComponent,
     MusicComponent,
@@ -38,15 +52,28 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MediaViewerComponent,
     NavigationBarComponent,
     FooterComponent,
-    VideoModalComponent
+    VideoModalComponent,
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent,
+    EditRemoveMenuComponent,
+    EditRemoveSpecificComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    
+    
+    
+    
   ],
-  providers: [],
+  providers: [FirebaseService,FilesUploadMetadata],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

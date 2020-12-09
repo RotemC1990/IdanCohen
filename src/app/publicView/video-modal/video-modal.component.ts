@@ -1,4 +1,4 @@
-import { Component , ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component , ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-video-modal',
@@ -8,39 +8,27 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
  
 })
 
-export class VideoModalComponent  {
-  closeResult: string;
+export class VideoModalComponent  implements AfterViewInit{
+  
+  
 
-
- 
+  
+  @ViewChild('longContent') mymodal: ElementRef;
   
     constructor(private modalService: NgbModal) {}
   
-    openBackDropCustomClass(content) {
-      this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
-    }
+  ngAfterViewInit() {
+    console.log(this.mymodal)
+    this.modalService.open(this.mymodal, { windowClass: 'dark-modal' ,  scrollable: true , size: 'xl' });
+  }
+  
+   
   
     openWindowCustomClass(content) {
-      this.modalService.open(content, { windowClass: 'dark-modal' ,  scrollable: true , size: 'xl' });
+      console.log(this.mymodal);
+      
+      this.modalService.open(this.mymodal, { windowClass: 'dark-modal' ,  scrollable: true , size: 'xl' });
+      
     }
   
-    openSm(content) {
-      this.modalService.open(content, { size: 'sm' });
-    }
-  
-    openLg(content) {
-      this.modalService.open(content, { size: 'lg' });
-    }
-  
-    openXl(content) {
-      this.modalService.open(content, { size: 'xl' });
-    }
-  
-    openVerticallyCentered(content) {
-      this.modalService.open(content, { centered: true });
-    }
-  
-    openScrollableContent(longContent) {
-      this.modalService.open(longContent, { scrollable: true });
-    }
   }

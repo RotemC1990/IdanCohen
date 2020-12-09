@@ -1,24 +1,27 @@
 export class Video {
-    videoPath = "";
+    path = "";
     posterPath="";
-    videoName="";
-    videoDesc="";
+    name="";
+    description="";
     frontReel=true;
+    category="";
     
-    constructor(Vpath:string,pPath:string, name: string,desc:string,frontReelVideo:boolean) {
-      if(Vpath==undefined || Vpath ==null) {
-        this.videoPath = "../../assets/videos/FrontReel2.mp4";
+    constructor(path:string, posterPath:string, name: string, desc:string, category:string, frontReelVideo:boolean) {
+      if(path==undefined || path ==null) {
+        this.path = "../../assets/videos/FrontReel2.mp4";
         this.posterPath="";
-        this.videoName = "";
-        this.videoDesc = "";
-        this.frontReel=frontReelVideo;
+        this.name = "";
+        this.description = "";
+        this.frontReel = frontReelVideo;
+        this.category = category;
       }
       else {
-        this.videoPath = Vpath;
-        this.posterPath=pPath;
-        this.videoName = name;
-        this.videoDesc = desc;
+        this.path = path;
+        this.posterPath=posterPath;
+        this.name = name;
+        this.description = desc;
         this.frontReel=frontReelVideo;
+        this.category = category;
       }
      
      }
