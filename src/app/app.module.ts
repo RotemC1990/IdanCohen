@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { EditComponent } from './login/edit/edit.component';
 import { HomeComponent } from './publicView/home/home.component';
 import { ProductComponent } from './publicView/product/product.component';
 import { MusicComponent } from './publicView/music/music.component';
@@ -31,6 +30,8 @@ import { UploaderComponent } from './login/uploadVideos/uploader/uploader.compon
 import { UploadTaskComponent } from './login/uploadVideos/upload-task/upload-task.component';
 import { EditRemoveMenuComponent } from './login/edit-remove-menu/edit-remove-menu.component';
 import { EditRemoveSpecificComponent } from './login/edit-remove-menu/edit-remove-specific/edit-remove-specific.component';
+import { AdminNavigationBarComponent } from './login/admin-navigation-bar/admin-navigation-bar.component';
+
 
 
 
@@ -40,7 +41,6 @@ import { EditRemoveSpecificComponent } from './login/edit-remove-menu/edit-remov
   declarations: [
     AppComponent,
     LoginComponent,
-    EditComponent,
     HomeComponent,
     ProductComponent,
     MusicComponent,
@@ -52,12 +52,14 @@ import { EditRemoveSpecificComponent } from './login/edit-remove-menu/edit-remov
     MediaViewerComponent,
     NavigationBarComponent,
     FooterComponent,
-    VideoModalComponent,
+    
     DropzoneDirective,
     UploaderComponent,
     UploadTaskComponent,
     EditRemoveMenuComponent,
     EditRemoveSpecificComponent,
+    AdminNavigationBarComponent,
+
     
   ],
   imports: [
@@ -73,7 +75,7 @@ import { EditRemoveSpecificComponent } from './login/edit-remove-menu/edit-remov
     
     
   ],
-  providers: [FirebaseService,FilesUploadMetadata],
+  providers: [FirebaseService,VideoModalComponent,FilesUploadMetadata],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

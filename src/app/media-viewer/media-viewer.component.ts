@@ -8,16 +8,25 @@ import { Component, OnInit, ViewChild, ElementRef, Inject, Input } from '@angula
 })
 
 export class MediaViewerComponent implements OnInit {
+  @Input() frontReelVideo : string; 
   @Input()  videoPath : string= "../../assets/FrontReel2.mp4";
+  @Input() posterURL : string;
   videoName="";
   videoDesc="";
-  @Input() frontReelVideo : boolean = true;
+ 
+ isFrontReel : boolean;
   constructor(){}
+
   
  
   ngOnInit(): void {
-    //this.playPause();
-    //this.zoomIn();
+
+    if(this.frontReelVideo == "true")
+      this.isFrontReel= true;
+    else
+      this.isFrontReel = false;
+      console.log(typeof this.frontReelVideo)
+    console.log("isFrontReel Boolean is   " + this.isFrontReel)
   }
   name = "Angular";
   @ViewChild("videoPlayer", { static: false }) videoPlayer: ElementRef;

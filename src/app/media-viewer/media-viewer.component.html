@@ -3,7 +3,7 @@
 	<script src="video.min.js"></script>
 </head>
 
-<div id="instructions" *ngIf="frontReelVideo">
+<div id="instructions" *ngIf="isFrontReel" oncontextmenu="return false;">
 	<video id="frontReel"  autoplay class="video-js vjs-default-skin vjs-fill" width="100%"    controls preload="none" loop="true"
 		poster=''
 		data-setup='{}'>
@@ -13,12 +13,14 @@
 	</video>
 </div>
 
-<div id="instructions" *ngIf="!frontReelVideo">
-	<video id="my_video"   class="video-js vjs-default-skin" width="25%"    controls preload="none" loop="true"
-		poster=''
+<div  *ngIf="!isFrontReel" oncontextmenu="return false;">
+	<video id="my_video"  autoplay  class="video-js vjs-default-skin " width="100%"    controls controlsList="nodownload" preload="none" loop="true"
+		poster='{{posterURL}}'
+		
 		data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
 		<source src="{{videoPath}}" type='video/mp4' />
 		
 	
 	</video>
+	
 </div>

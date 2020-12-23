@@ -33,3 +33,8 @@
       margin-left: 5em;
       margin-right: 5em;
   }
+  .buttons {
+    align-items: center;
+    text-align: center;
+    padding: 5em;
+  }

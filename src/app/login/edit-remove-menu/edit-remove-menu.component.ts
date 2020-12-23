@@ -31,6 +31,7 @@ export class EditRemoveMenuComponent implements OnInit {
       })
     });
     console.log(this.videosId)
+    console.log(this.videos)
     console.log(this.videosMeta)
       
   }

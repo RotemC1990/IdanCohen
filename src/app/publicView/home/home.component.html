@@ -1,4 +1,4 @@
-<app-media-viewer id="topPlayer" ></app-media-viewer> 
+<app-media-viewer frontReelVideo ="true" id="topPlayer" ></app-media-viewer> 
 
 
      
@@ -26,18 +26,53 @@
     <tr *ngIf="((i % 3) == 0)">
       <ng-container *ngFor="let video of videos; let j = index">
         <td *ngIf="j >= i && j < i+3">
-          <button type="button" class="btn btn-link" (click)="openModal(video)">
+          <button type="button" class="btn btn-link" (click)="openModal(videoContent,video)">
            
             
                
-               <img src="{{video.posterPath}}" height="200px">
-               <p>{{video.videoName}}</p>
+               <img src="{{video.posterDownloadURL}}" height="220px">
+               <p>{{video.name}}</p>
           </button>
         </td>
       </ng-container>
     </tr>
   </ng-container>
 </table>
-
-
-
+<table class="table table-borderless">
+  <tr>
+    <td class="btnTd">
+      <button  (click)="showMoreVideos()"  type="button" class="btn btn-primary">Show More</button>
+    </td>
+    <td class="btnTd">
+      <button  (click)="showAllVideos()"  type="button" class="btn btn-info">Show All</button>
+    </td>
+  </tr>
+</table>
+<ng-template  #videoContent let-modal>
+  <div class="modal-content" >
+  <div class="modal-header">
+    <h4 class="modal-title">{{videoTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <table>
+    <tr>
+      <th  class="modal-video">
+        
+         <app-media-viewer id = "video" frontReelVideo = "false" videoPath = "{{videoURL}}"  posterURL = "{{posterURL}}"></app-media-viewer> 
+       
+      </th>
+      <th class="modal-details">
+        
+         {{videoDescription}}
+        
+      <th>
+    </tr>
+  </table>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</div>
+</ng-template>

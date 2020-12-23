@@ -2,7 +2,7 @@
 <br>
 <h1>Edit And Remove Video</h1>
 <br>
-<h1>{{video.name}}</h1>
+<h1>{{video.title}}</h1>
 <br>
 
 <div class="all-form-groups">
@@ -13,6 +13,8 @@
       <label for="description">Video Description</label>
       <textarea class="form-control" [(ngModel)]="description" rows="3"></textarea>
 
+      <label for="description">Video Credits</label>
+      <textarea class="form-control" [(ngModel)]="credits" rows="3"></textarea>
       <label for="video"> Poster And Video Files</label>
       
       <div class="dropzone" 
@@ -48,9 +50,19 @@
         <option>Viral</option>
       </select>
       <br>
-     
-  <button (click)="updateVideo()"  type="button" class="btn btn-secondary">Update</button>
-  <button (click)="deleteVideo()"  type="button" class="btn btn-danger">Delete</button>
+      <div class="buttons">
+       
+        <table class="table table-borderless">
+          <tr>
+            <td>
+              <button  (click)="updateVideo()"  type="button" class="btn btn-secondary">Update</button>
+            </td>
+            <td>
+              <button  (click)="deleteVideo()"  type="button" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
     
 </div>

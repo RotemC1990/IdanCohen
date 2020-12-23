@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditComponent } from './login/edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './publicView/home/home.component';
 import { ProductComponent } from './publicView/product/product.component';
@@ -19,7 +18,6 @@ import {EditRemoveSpecificComponent} from './login/edit-remove-menu/edit-remove-
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path:'login' ,component: LoginComponent },
-  {path: 'edit' , component: EditComponent},
   {path: 'home' , component: HomeComponent},
   {path: 'product' , component: ProductComponent},
   {path: 'music' , component: MusicComponent},

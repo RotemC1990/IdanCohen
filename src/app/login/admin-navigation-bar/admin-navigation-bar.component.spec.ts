@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditComponent } from './edit.component';
+import { AdminNavigationBarComponent } from './admin-navigation-bar.component';
 
-describe('EditComponent', () => {
-  let component: EditComponent;
-  let fixture: ComponentFixture<EditComponent>;
+describe('AdminNavigationBarComponent', () => {
+  let component: AdminNavigationBarComponent;
+  let fixture: ComponentFixture<AdminNavigationBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditComponent ]
+      declarations: [ AdminNavigationBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditComponent);
+    fixture = TestBed.createComponent(AdminNavigationBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

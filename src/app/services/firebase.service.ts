@@ -13,8 +13,12 @@ import { FilesUploadMetadata } from '../models/FilesUploadMetadata';
 })
 export class FirebaseService {
   
-  private dbPath = '/videos';
+  
   videoRef: AngularFirestoreCollection<Video> = null;
+  private dbPath = '/videos';
+
+  videosSortRef: AngularFirestoreCollection<string> = null;
+  private dbSortPath = '/videosSort';
   snapshot: Observable<any>;
   task :AngularFireUploadTask;
   private downloadUrl: string;
@@ -24,6 +28,7 @@ export class FirebaseService {
               private storage: AngularFireStorage
               ) {
     this.videoRef = db.collection(this.dbPath);
+    this.videosSortRef = db.collection(this.dbSortPath);
    }
 
   getAll(): AngularFirestoreCollection<Video> {
@@ -36,6 +41,19 @@ export class FirebaseService {
     return  this.videoRef;
   }
 
+  updateSortedVideoList(category: string, forHomePage: boolean, data: any): Promise<void> {
+    if(forHomePage) {
+      return this.videosSortRef.doc("homePage").set(Object.assign({}, JSON.parse(JSON.stringify(data))));
+    }
+    else {
+      return this.videosSortRef.doc(category).set(Object.assign({}, JSON.parse(JSON.stringify(data))));
+    } 
+  }
+
+  getSortList() {
+    return this.videosSortRef;
+  }
+
 
   
 
@@ -44,7 +62,8 @@ export class FirebaseService {
   }
 
   update(id: string, data: any): Promise<void> {
-    return this.videoRef.doc(id).update(data);
+    return this.videoRef.doc(id).set(Object.assign({}, JSON.parse(JSON.stringify(data))));
+
   }
 
   deleteFromFirestore(id: string): Promise<void> {
@@ -69,7 +88,7 @@ export class FirebaseService {
        // The file's download URL
        finalize( async() =>  {
          this.downloadUrl = await ref.getDownloadURL().toPromise();
-         video.posterPath = this.downloadUrl;
+         video.posterDownloadURL = this.downloadUrl;
          this.create(video);  
                
        }),

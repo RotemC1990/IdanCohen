@@ -20,6 +20,7 @@ export class UploaderComponent implements OnInit{
   title = "";
   description = "";
   category = "";
+  credits= "";
 
 
   task: AngularFireUploadTask;
@@ -62,7 +63,7 @@ export class UploaderComponent implements OnInit{
   startUpload() {
     this.data.currentVideoDownloadUrl.subscribe(videoDownloadURL => this.videoDownloadURL = videoDownloadURL);
     this.data.currentPosterDownloadUrl.subscribe(posterDownloadURL => this.posterDownloadURL = posterDownloadURL);
-    this.video = new Video(this.videoDownloadURL,this.posterDownloadURL,this.title,this.description,this.category,false);
+    this.video = new Video(this.videoDownloadURL,this.posterDownloadURL,this.title,this.description,this.category,this.credits,false);
    
 
      
@@ -70,6 +71,9 @@ export class UploaderComponent implements OnInit{
       this.uploadBoolean = false;
       this.data.changeCanUploadStatus(this.uploadBoolean);
       this.firebaseService.create(this.video);
+      this.firebaseService.updateSortedVideoList(this.category,false,this.title);
+      this.firebaseService.updateSortedVideoList(this.category,true,this.title);
+
       
   }
   
