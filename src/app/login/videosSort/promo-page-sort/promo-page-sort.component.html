@@ -1,0 +1,23 @@
+<app-sort-navigation-bar currentSortPage = "Promo"></app-sort-navigation-bar>
+<br>
+<h1>Promo Sort</h1>
+<br>
+<div *ngFor="let video of sortedVideos; let indx = index" class="videosTemplate">
+    <app-video-template 
+    videoURL="{{video.downloadURL}}" 
+    posterURL = "{{video.posterDownloadURL}}"
+    videoTitle = "{{video.title}}"
+    videoDescription = "{{video.description}}"
+    videoCredits = "{{video.credits}}"
+    ></app-video-template>
+    <select  class='form-control' (change)="changePlace($event.target.value,video.title)" >
+        <ng-container *ngFor="let place of sortedVideos; let sortIndx = index ">        
+            
+            <option *ngIf="indx+1 == sortIndx+1" disabled  selected="{{indx+1}}" value='{{sortIndx}}'>{{sortIndx+1}}</option>
+            <option *ngIf="indx+1 != sortIndx+1"   value='{{sortIndx}}'>{{sortIndx+1}}</option>
+        </ng-container>
+    </select>
+</div>
+<div class="saveChanges">
+    <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+  </div>

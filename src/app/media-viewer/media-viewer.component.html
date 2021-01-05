@@ -13,8 +13,20 @@
 	</video>
 </div>
 
-<div  *ngIf="!isFrontReel" oncontextmenu="return false;">
-	<video id="my_video"  autoplay  class="video-js vjs-default-skin " width="100%"    controls controlsList="nodownload" preload="none" loop="true"
+<div  *ngIf="!isFrontReel && !isVideoTemplate" oncontextmenu="return false;">
+	<video id="my_video"  autoplay  class="video-js vjs-default-skin " width="100%"    controls controlsList="nodownload" preload="none"
+		poster='{{posterURL}}'
+		
+		data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+		<source src="{{videoPath}}" type='video/mp4' />
+		
+	
+	</video>
+	
+</div>
+
+<div  *ngIf="!isFrontReel && isVideoTemplate" oncontextmenu="return false;">
+	<video id="my_video"  class="video-js vjs-default-skin " width="100%"    controls controlsList="nodownload" preload="none"
 		poster='{{posterURL}}'
 		
 		data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>

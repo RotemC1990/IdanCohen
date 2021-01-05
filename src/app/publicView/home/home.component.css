@@ -31,18 +31,58 @@
     width: 29%;
     float: right;
     text-align: left;
+    
   }
   .modal-video {
     width: 70%;
+    margin: auto;
+    
+    text-align: center;
     float: left;
   }
-
+.modal-table{
+  height: fit-content;
+}
 
   .close {
     color: white;
+    
   }
 
 .modal-content {
   background-color: #292b2c;
   color: white;
+}
+hr {
+  color: #41b792;
+  background-color:#41b792;
+  height:12px;
+  margin-top: -0.35%;
+  padding-top: 0%;
+  border-top: 0%;
+  margin-bottom: -0.3%;
+}
+.topBody {
+  text-align: center;
+  margin: auto;
+}
+.centered {
+  position: sticky;
+  position: -webkit-sticky;
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+ 
+}
+@media (min-height: 768px) {
+  #topBody{
+    height: 2000px;
+  }
+}
+#logo {
+  width: 300px;
+   
 }

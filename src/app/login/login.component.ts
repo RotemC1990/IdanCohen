@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AngularFireAuth } from '@angular/fire/auth';
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
 	styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent implements OnInit {
-	username = '';
+	email = '';
 	password = '';
-	errorMsg = 'Invalid Credentials';
-  invalidLogin = false;
-  
-	constructor(private router: Router) {}
+	errorMsg = '';
+
+	constructor(private router: Router, private auth: AngularFireAuth) {}
 
 	ngOnInit(): void {}
 
-	handleLogin() {
-		console.log(this.username);
-		console.log(this.password);
-		if (this.username === 'idan' && this.password === 'idan') {
-      this.invalidLogin = false;
-      this.router.navigate(['upload']);
-    } 
-    else this.invalidLogin = true;
+	login() {
+		this.auth
+			.signInWithEmailAndPassword(this.email, this.password)
+			.then(() => this.router.navigate([ 'editRemoveMenu' ]))
+			.catch(() => {
+				this.errorMsg = 'Invalid Credentials';
+			});
 	}
 }

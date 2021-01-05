@@ -1,4 +1,4 @@
-
+<app-admin-navigation-bar currentPage = "EditAndRemove"></app-admin-navigation-bar>
 <br>
 <h1>Edit And Remove Video</h1>
 <br>
@@ -34,8 +34,10 @@
       <br>
       <label for="category">Video</label>
       <br>
-        {{videoURL}}
-      <br>
+      <div class="videoReview">
+      <app-media-viewer class="videoReview" id = "video" frontReelVideo = "false" videoPath = "{{videoURL}}"  posterURL = "{{posterURL}}"></app-media-viewer> 
+      </div>
+        <br>
       <label for="category">Poster</label>
       <br>
       <img src="{{posterURL}}" height="200px">

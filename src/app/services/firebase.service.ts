@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import {  AngularFireStorage,  AngularFireUploadTask} from '@angular/fire/storage';
 import {Video }from '../models/video.model';
 import { from, Observable } from 'rxjs';
 import { finalize, switchMap, tap } from 'rxjs/operators';
 import { FilesUploadMetadata } from '../models/FilesUploadMetadata';
+import { VideoSort } from '../models/videoSort.model';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 
@@ -22,36 +24,78 @@ export class FirebaseService {
   snapshot: Observable<any>;
   task :AngularFireUploadTask;
   private downloadUrl: string;
-  private videosArray : Video[];
+  private loadedSortList: any;
+  private sortList: VideoSort;
+  private videosList : Video [] = [];
+
   constructor( 
               private db: AngularFirestore,
-              private storage: AngularFireStorage
+              private storage: AngularFireStorage,
+              private auth: AngularFireAuth
               ) {
     this.videoRef = db.collection(this.dbPath);
     this.videosSortRef = db.collection(this.dbSortPath);
    }
 
-  getAll(): AngularFirestoreCollection<Video> {
-    return this.videoRef;
+  async getVideoRef() {
+    return new Promise<DocumentChangeAction<Video> []>((resolve, reject) => {
+      this.videoRef.snapshotChanges().subscribe(obj => {
+        return resolve(obj);
+      });
+    });
   }
   
+  signOut() {
+    return this.auth.signOut();
+  }
      
   
-   getVideos(){
-    return  this.videoRef;
+  async getVideosList(){
+    this.videosList = [];
+    return new Promise<Video []>((resolve, reject) => {
+      this.videoRef.snapshotChanges().subscribe(obj => {
+        obj.forEach(item => {
+          this.videosList.push(item.payload.doc.data());
+        })
+        return resolve(this.videosList);
+      });
+    });
   }
 
-  updateSortedVideoList(category: string, forHomePage: boolean, data: any): Promise<void> {
-    if(forHomePage) {
-      return this.videosSortRef.doc("homePage").set(Object.assign({}, JSON.parse(JSON.stringify(data))));
-    }
-    else {
-      return this.videosSortRef.doc(category).set(Object.assign({}, JSON.parse(JSON.stringify(data))));
-    } 
+  
+
+
+
+  updateSortedVideoList(data: any): Promise<void> {
+    return this.videosSortRef.doc("byCategory").set(Object.assign({}, JSON.parse(JSON.stringify(data))));
+    
   }
 
-  getSortList() {
-    return this.videosSortRef;
+  async getSortList() {
+    return new Promise<VideoSort>((resolve, reject) => {
+      this.videosSortRef.snapshotChanges().subscribe(obj => {
+        obj.forEach(item => {
+          this.loadedSortList =item.payload.doc.data();
+          this.sortList = new VideoSort(this.loadedSortList.homePage,this.loadedSortList.productPage,this.loadedSortList.musicPage,this.loadedSortList.commercialPage,
+                                        this.loadedSortList.promoPage,this.loadedSortList.eventsPage,this.loadedSortList.viralPage)
+          })
+          return resolve(this.sortList);
+      });
+  });
+
+  }
+
+  getSortedListByCategory(category: string) {
+    let wantedList =[];
+    this.videosSortRef.snapshotChanges().subscribe(obj => {
+      obj.forEach(item => {
+        console.log(item.payload.doc.id)
+        if(item.payload.doc.id == category) {
+          wantedList.push(item.payload.doc.data());
+        }
+      })
+    });
+    return wantedList;
   }
 
 

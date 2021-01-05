@@ -1,0 +1,35 @@
+<app-sort-navigation-bar  currentSortPage = "Home"></app-sort-navigation-bar>
+
+
+
+<br>
+<table class="table table-borderless">
+    <ng-container *ngFor="let video of sortedVideos; let i = index">
+      <tr *ngIf="((i % 3) == 0)">
+        <ng-container *ngFor="let video of sortedVideos; let j = index">
+          <td *ngIf="j >= i && j < i+3">
+            <button type="button" class="btn btn-link" >
+             
+              
+                 <h4>{{video.title}}</h4>
+                 <img src="{{video.posterDownloadURL}}" height="200px">
+                 <br>
+                 <select  class='form-control' 
+                    (change)="changePlace($event.target.value,video.title)" >
+                    <ng-container *ngFor="let place of sortList.homePage; let indx = index ">
+                    <option *ngIf="indx+1 == j+1" disabled  selected="{{j+1}}" value='{{indx}}'>{{indx+1}}</option>
+                    <option *ngIf="indx+1 != j+1"   value='{{indx}}'>{{indx+1}}</option>
+                </ng-container>
+                </select>
+                 
+                 
+            </button>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </table>
+  <div class="saveChanges">
+  <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+</div>
+<br>

@@ -38,3 +38,9 @@
     text-align: center;
     padding: 5em;
   }
+  .videoReview {
+    align-items: center;
+    width: 600px;
+    align-content: center;
+    text-align: center;
+  }

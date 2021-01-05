@@ -31,6 +31,16 @@ import { UploadTaskComponent } from './login/uploadVideos/upload-task/upload-tas
 import { EditRemoveMenuComponent } from './login/edit-remove-menu/edit-remove-menu.component';
 import { EditRemoveSpecificComponent } from './login/edit-remove-menu/edit-remove-specific/edit-remove-specific.component';
 import { AdminNavigationBarComponent } from './login/admin-navigation-bar/admin-navigation-bar.component';
+import { HomePageSortComponent } from './login/videosSort/home-page-sort/home-page-sort.component';
+import { ProductPageSortComponent } from './login/videosSort/product-page-sort/product-page-sort.component';
+import { MusicPageSortComponent } from './login/videosSort/music-page-sort/music-page-sort.component';
+import { CommercialPageSortComponent } from './login/videosSort/commercial-page-sort/commercial-page-sort.component';
+import { PromoPageSortComponent } from './login/videosSort/promo-page-sort/promo-page-sort.component';
+import { EventsPageSortComponent } from './login/videosSort/events-page-sort/events-page-sort.component';
+import { ViralPageSortComponent } from './login/videosSort/viral-page-sort/viral-page-sort.component';
+import { SortNavigationBarComponent } from './login/videosSort/sort-navigation-bar/sort-navigation-bar.component';
+import { VideoTemplateComponent } from './publicView/video-template/video-template.component';
+
 
 
 
@@ -59,6 +69,16 @@ import { AdminNavigationBarComponent } from './login/admin-navigation-bar/admin-
     EditRemoveMenuComponent,
     EditRemoveSpecificComponent,
     AdminNavigationBarComponent,
+    HomePageSortComponent,
+    ProductPageSortComponent,
+    MusicPageSortComponent,
+    CommercialPageSortComponent,
+    PromoPageSortComponent,
+    EventsPageSortComponent,
+    ViralPageSortComponent,
+    SortNavigationBarComponent,
+    VideoTemplateComponent,
+
 
     
   ],

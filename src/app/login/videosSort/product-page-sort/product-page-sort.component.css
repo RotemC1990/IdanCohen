@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+    font-style: italic;
+}
+
+.videosTemplate {
+    margin: auto;
+    width: 55%;
+    padding: 10px;
+}
+.saveChanges {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

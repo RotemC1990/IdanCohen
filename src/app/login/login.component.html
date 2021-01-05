@@ -1,8 +1,32 @@
-<small *ngIf="invalidLogin">{{errorMsg}}</small>
+
 <div>
-    User name : <input type="text" name="username" [(ngModel)]="username" >
-    <p>
-    Password : <input type="password" name ="password" [(ngModel)]="password">
-    <p>
-    <button (click)=handleLogin()>Login</button>
+
+  <table class="table table-borderless">
+    <tr>
+      <td>
+        Email :
+      </td>
+      <td>
+        <input type="text" name="email" [(ngModel)]="email">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password :
+      </td>
+      <td>
+        <input type="password" name="password" [(ngModel)]="password">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)=login()>Login</button>
+      </td>
+    </tr>
+    <tr>
+        <small *ngIf="errorMsg.length > 0">{{errorMsg}}</small>
+    </tr>
+  </table>
+
+
 </div>

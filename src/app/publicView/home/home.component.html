@@ -1,37 +1,26 @@
+<div class="topBody">
+
 <app-media-viewer frontReelVideo ="true" id="topPlayer" ></app-media-viewer> 
 
+<hr>
+<app-navigation-bar currentPage = "Home"></app-navigation-bar>
 
-     
-   
-
-<app-navigation-bar></app-navigation-bar>
 <br>
-<h1>Idan Cohen</h1>
+
+</div>
+
+<h1><img id = "logo" src = "{{logoPath}}"></h1>
 <h4>Creative    -    Director    -    Video editor</h4>
-
-
-<!--
-<app-media-viewer *ngFor="let video of videos"
-      [videoPath]="video.videoPath"
-      [frontReelVideo]=video.frontReel>
-    </app-media-viewer>
-<app-video-modal></app-video-modal>
-
-
-
--->
 <br><br>
+
 <table class="table table-borderless">
-  <ng-container *ngFor="let video of videos; let i = index">
+  <ng-container *ngFor="let video of sortedVideos; let i = index">
     <tr *ngIf="((i % 3) == 0)">
-      <ng-container *ngFor="let video of videos; let j = index">
-        <td *ngIf="j >= i && j < i+3">
+      <ng-container *ngFor="let video of sortedVideos; let j = index">
+        <td *ngIf="j >= i && j < i+3 && videosToShow > j">
           <button type="button" class="btn btn-link" (click)="openModal(videoContent,video)">
-           
-            
-               
                <img src="{{video.posterDownloadURL}}" height="220px">
-               <p>{{video.name}}</p>
+               <h5>{{video.title}}</h5>
           </button>
         </td>
       </ng-container>
@@ -41,32 +30,33 @@
 <table class="table table-borderless">
   <tr>
     <td class="btnTd">
-      <button  (click)="showMoreVideos()"  type="button" class="btn btn-primary">Show More</button>
+      <button  (click)="showMoreVideos()" id="showMoreBtn" type="button" class="btn btn-info">Show More</button>
     </td>
-    <td class="btnTd">
-      <button  (click)="showAllVideos()"  type="button" class="btn btn-info">Show All</button>
-    </td>
+    
   </tr>
 </table>
 <ng-template  #videoContent let-modal>
   <div class="modal-content" >
-  <div class="modal-header">
-    <h4 class="modal-title">{{videoTitle}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+
   
-  <table>
+  <table class="modal-table">
     <tr>
       <th  class="modal-video">
         
-         <app-media-viewer id = "video" frontReelVideo = "false" videoPath = "{{videoURL}}"  posterURL = "{{posterURL}}"></app-media-viewer> 
+         <app-media-viewer class="videoInModal" id = "video" frontReelVideo = "false" videoPath = "{{videoURL}}"  posterURL = "{{posterURL}}"></app-media-viewer> 
        
       </th>
       <th class="modal-details">
-        
+        <h4 class="modal-title">{{videoTitle}}</h4>
+        <br>
+        <br>
          {{videoDescription}}
+         <br>
+         <br>
+         <br>
+         Credits:
+         <br>
+         {{videoCredits}}
         
       <th>
     </tr>

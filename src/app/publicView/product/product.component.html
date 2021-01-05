@@ -1,3 +1,14 @@
-<app-navigation-bar></app-navigation-bar>
-
-<p>product works!</p>
+<br>
+<app-navigation-bar currentPage = "Product"></app-navigation-bar>
+<br>
+<h1>Product</h1>
+<br>
+<div *ngFor="let video of sortedVideos" class="videosTemplate">
+    <app-video-template 
+    videoURL="{{video.downloadURL}}" 
+    posterURL = "{{video.posterDownloadURL}}"
+    videoTitle = "{{video.title}}"
+    videoDescription = "{{video.description}}"
+    videoCredits = "{{video.credits}}"
+    ></app-video-template>
+</div>

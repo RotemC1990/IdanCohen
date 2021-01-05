@@ -2,9 +2,10 @@
     <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-center">
 
         <ul class="navbar-nav">
-            <li> <a [routerLink]="['/uploadVideo']" class="nav-link">Upload Video</a></li>
-            <li> <a [routerLink]="['/editRemoveMenu']" class="nav-link">Edit And Remove Video</a></li>
-      
+            <li> <a id="upload" [routerLink]="['/uploadVideo']" class="nav-link">Upload Video</a></li>
+            <li> <a id="edit" [routerLink]="['/editRemoveMenu']" class="nav-link">Edit And Remove Videos</a></li>
+            <li> <a id="sort" [routerLink]="['/homeSort']" class="nav-link">Sort Videos</a></li>
+            <li> <a [routerLink] (click)="logout()" class="nav-link" id="logout" >Logout</a></li>
         </ul>
-    
+        
 </nav>

@@ -5,3 +5,8 @@ p {
 #frontReel::-webkit-media-controls {
   display: none;
 }
+#instructions{
+  margin: 0%;
+  padding: 0%;
+  border:0%;
+}

@@ -9,22 +9,33 @@ import { Component, OnInit, ViewChild, ElementRef, Inject, Input } from '@angula
 
 export class MediaViewerComponent implements OnInit {
   @Input() frontReelVideo : string; 
-  @Input()  videoPath : string= "../../assets/FrontReel2.mp4";
-  @Input() posterURL : string;
+  @Input()  videoPath : string = "https://firebasestorage.googleapis.com/v0/b/videographer-1b3cb.appspot.com/o/videos%2FFrontReel2.mp4?alt=media&token=4e76e5be-fbb4-4b01-996e-6ffcca0480b5";
+  @Input() posterURL : string = "https://firebasestorage.googleapis.com/v0/b/videographer-1b3cb.appspot.com/o/posters%2FTop%20Panel%20Reel.png?alt=media&token=f04aadf8-2bda-41c9-adb6-768dbe23dce7";
+  @Input() videoTemplate : string; 
   videoName="";
   videoDesc="";
  
  isFrontReel : boolean;
+ isVideoTemplate : boolean;
   constructor(){}
 
   
  
   ngOnInit(): void {
 
-    if(this.frontReelVideo == "true")
+    if(this.frontReelVideo == "true") {
       this.isFrontReel= true;
-    else
+    } 
+    else {
       this.isFrontReel = false;
+    }
+    if(this.videoTemplate == "true") {
+      this.isVideoTemplate = true;
+    }
+    else {
+      this.isVideoTemplate = false;
+    }
+      
       console.log(typeof this.frontReelVideo)
     console.log("isFrontReel Boolean is   " + this.isFrontReel)
   }

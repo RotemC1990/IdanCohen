@@ -21,19 +21,14 @@ export class EditRemoveMenuComponent implements OnInit {
                       private router: Router
              ) {}
 
-  ngOnInit() {
-    this.firebaseService.getVideos().snapshotChanges().subscribe(obj => {
-      obj.forEach(item => {
+  async ngOnInit() {
+    (await this.firebaseService.getVideoRef()).forEach(item => {
         
         this.videosId.push(item.payload.doc.id);
         this.videos.push(item.payload.doc.data());
         this.videosMeta.push(item.payload.doc);
       })
-    });
-    console.log(this.videosId)
-    console.log(this.videos)
-    console.log(this.videosMeta)
-      
+   
   }
   goToEditRemove(video : Video, videoId : string) {
     this.router.navigate(['editRemoveSpecific'], {state: {data: {video , videoId}}});

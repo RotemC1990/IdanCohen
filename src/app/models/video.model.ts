@@ -8,7 +8,7 @@ export class Video {
     credits="";
     
     constructor(downloadURL:string, posterDownloadURL:string, title: string, desc:string, category:string, credits : string, frontReelVideo:boolean) {
-      if(downloadURL ==undefined || downloadURL ==null) {
+      if(downloadURL == undefined || downloadURL == null) {
         this.downloadURL = "../../assets/videos/FrontReel2.mp4";
         this.posterDownloadURL="";
         this.title = "";
