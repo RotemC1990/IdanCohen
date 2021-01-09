@@ -1,14 +1,13 @@
 <head>
-	<script src="video-js.min.css" rel="stylesheet"></script>
+	<script src="video-js.css" rel="stylesheet"></script>
 	<script src="video.min.js"></script>
 </head>
 
-<div id="instructions" *ngIf="isFrontReel" oncontextmenu="return false;">
-	<video id="frontReel"  autoplay class="video-js vjs-default-skin vjs-fill" width="100%"    controls preload="none" loop="true"
-		poster=''
-		data-setup='{}'>
+<div  id="instructions" *ngIf="isFrontReel" oncontextmenu="return false;">
+	<video id="frontReel" oncanplay="this.play()" onloadedmetadata="this.muted = true" class="video-js vjs-default-skin vjs-fill" width="100%"    controls  loop="true"
+		poster='{{posterURL}}'
+		>
 		<source src="{{videoPath}}" type='video/mp4' />
-		
 	
 	</video>
 </div>

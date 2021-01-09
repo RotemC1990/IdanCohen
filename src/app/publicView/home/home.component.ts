@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Video } from 'src/app/models/video.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -12,6 +12,7 @@ import { VideoSort } from 'src/app/models/videoSort.model';
 })
 export class HomeComponent implements OnInit {
 	@ViewChild('videoContent') mymodal: ElementRef;
+
 	logoPath: string = '../../assets/idanLogo.gif';
 	videoFrontReel: boolean;
 	videoURL: string;
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
 		private firebaseService: FirebaseService,
 		private videoModalService: VideoModalService
 	) {}
-
+	
 	async ngOnInit() {
 		this.videos = await this.firebaseService.getVideosList();
 		this.videosSortList = await this.firebaseService.getSortList();

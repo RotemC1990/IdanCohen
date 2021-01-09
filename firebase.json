@@ -7,8 +7,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "site": "idancohen",
-    "public": "public",
+    "public": "dist/idanCohen",
     "ignore": [
       "firebase.json",
       "**/.*",

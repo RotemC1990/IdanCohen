@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { FirebaseService } from '../services/firebase.service';
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
@@ -11,13 +11,12 @@ export class LoginComponent implements OnInit {
 	password = '';
 	errorMsg = '';
 
-	constructor(private router: Router, private auth: AngularFireAuth) {}
+	constructor(private router: Router, private firebaseService: FirebaseService) {}
 
 	ngOnInit(): void {}
 
 	login() {
-		this.auth
-			.signInWithEmailAndPassword(this.email, this.password)
+		this.firebaseService.signIn(this.email,this.password)
 			.then(() => this.router.navigate([ 'editRemoveMenu' ]))
 			.catch(() => {
 				this.errorMsg = 'Invalid Credentials';

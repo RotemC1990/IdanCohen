@@ -48,7 +48,9 @@ export class FirebaseService {
   signOut() {
     return this.auth.signOut();
   }
-     
+  signIn(email: string, password: string){
+    return this.auth.signInWithEmailAndPassword(email, password);
+  }
   
   async getVideosList(){
     this.videosList = [];

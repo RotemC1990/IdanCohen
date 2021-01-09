@@ -46,6 +46,10 @@ export class NavigationBarComponent implements OnInit {
       case 'Home': {
         document.getElementById("home").style.color = "#41b792";
         break;
+      }
+      case 'Login': {
+        document.getElementById("login").style.color = "#41b792";
+        break;
 			}
 		}
   }

@@ -1,7 +1,12 @@
-
-<div>
-
-  <table class="table table-borderless">
+<br>
+<app-navigation-bar currentPage="Login"></app-navigation-bar>
+<br>
+<br>
+<br>
+<div class="login">
+  <span class="border border-5">
+  <table class="table table-borderless login ">
+    <tbody>
     <tr>
       <td>
         Email :
@@ -26,7 +31,8 @@
     <tr>
         <small *ngIf="errorMsg.length > 0">{{errorMsg}}</small>
     </tr>
+  </tbody>
   </table>
-
+</span>
 
 </div>

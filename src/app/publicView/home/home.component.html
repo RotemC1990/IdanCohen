@@ -1,26 +1,20 @@
 <div class="topBody">
-
-<app-media-viewer frontReelVideo ="true" id="topPlayer" ></app-media-viewer> 
-
-<hr>
-<app-navigation-bar currentPage = "Home"></app-navigation-bar>
-
-<br>
-
+  <app-media-viewer #tpl frontReelVideo="true" id="topPlayer"></app-media-viewer>
+  <hr>
+  <app-navigation-bar currentPage="Home"></app-navigation-bar>
+  <br>
 </div>
-
-<h1><img id = "logo" src = "{{logoPath}}"></h1>
-<h4>Creative    -    Director    -    Video editor</h4>
+<h1><img id="logo" src="{{logoPath}}"></h1>
+<h4>Creative - Director - Video editor</h4>
 <br><br>
-
 <table class="table table-borderless">
   <ng-container *ngFor="let video of sortedVideos; let i = index">
     <tr *ngIf="((i % 3) == 0)">
       <ng-container *ngFor="let video of sortedVideos; let j = index">
         <td *ngIf="j >= i && j < i+3 && videosToShow > j">
           <button type="button" class="btn btn-link" (click)="openModal(videoContent,video)">
-               <img src="{{video.posterDownloadURL}}" height="220px">
-               <h5>{{video.title}}</h5>
+            <img src="{{video.posterDownloadURL}}" height="220px">
+            <h5>{{video.title}}</h5>
           </button>
         </td>
       </ng-container>
@@ -30,39 +24,34 @@
 <table class="table table-borderless">
   <tr>
     <td class="btnTd">
-      <button  (click)="showMoreVideos()" id="showMoreBtn" type="button" class="btn btn-info">Show More</button>
+      <button (click)="showMoreVideos()" id="showMoreBtn" type="button" class="btn btn-info">Show More</button>
     </td>
-    
   </tr>
 </table>
-<ng-template  #videoContent let-modal>
-  <div class="modal-content" >
-
-  
-  <table class="modal-table">
-    <tr>
-      <th  class="modal-video">
-        
-         <app-media-viewer class="videoInModal" id = "video" frontReelVideo = "false" videoPath = "{{videoURL}}"  posterURL = "{{posterURL}}"></app-media-viewer> 
-       
-      </th>
-      <th class="modal-details">
-        <h4 class="modal-title">{{videoTitle}}</h4>
-        <br>
-        <br>
-         {{videoDescription}}
-         <br>
-         <br>
-         <br>
-         Credits:
-         <br>
-         {{videoCredits}}
-        
-      <th>
-    </tr>
-  </table>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+<ng-template #videoContent let-modal>
+  <div class="modal-content">
+    <table class="modal-table">
+      <tr>
+        <th class="modal-video">
+          <app-media-viewer class="videoInModal" id="video" frontReelVideo="false" videoPath="{{videoURL}}"
+            posterURL="{{posterURL}}"></app-media-viewer>
+        </th>
+        <th class="modal-details">
+          <h4 class="modal-title">{{videoTitle}}</h4>
+          <br>
+          <br>
+          {{videoDescription}}
+          <br>
+          <br>
+          <br>
+          Credits:
+          <br>
+          {{videoCredits}}
+        <th>
+      </tr>
+    </table>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
   </div>
-</div>
 </ng-template>
